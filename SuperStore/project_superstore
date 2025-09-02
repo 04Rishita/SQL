@@ -1,0 +1,62 @@
+SELECT * FROM superstore.storedata;
+-- Find the customers who placed the maximum single order quantity and show their total number of orders
+select Customer_Name,count(*) as total_orders 
+from storedata
+where Quantity=(select max(Quantity) from storedata)
+group by Customer_Name;
+
+-- For the categories Furniture, Technology, and Office Supplies, list each subcategory along with the number of products, the total quantity ordered, and the average quantity ordered.
+ -- Display the results grouped by category and sorted by total quantity in descending order
+select Category,Sub_Category,count(Product_Name) as total_products,avg(Quantity) as avg_quantity,(sum(Quantity)) as total_quantity
+from storedata where Category in('Furniture','Technology','Office Supplies')
+group by Category,Sub_Category
+order by Category,Sub_Category desc;
+
+-- Show the number of orders per region, sorted by order count in descending order
+select Region,count(distinct Order_ID) as total_orders from storedata group by Region
+order by total_orders desc;
+
+-- For the West region, find the number of Furniture products sold in each Sub-Category, 
+-- along with the average quantity per order, sorted by highest sales count.
+select Sub_Category,count(Product_Name) as total_products from storedata 
+where Region='West' and Category='Furniture' 
+group by Sub_Category
+order by total_products  desc;
+
+-- For each state, identify the order that incurred the minimum profit
+-- Display the Order ID, State and Profit for those orders using JOIN."
+select s.Order_ID,s.State,s.Profit from storedata s join
+(select state,min(Profit) as minimum_profit from storedata 
+group by state) as t
+on s.State=t.State and s.Profit=t.minimum_profit;
+
+-- For each order in the storedata table, classify the order’s sales as 'Excellent' if it is above 5000, 'Good' if it is between 1000 and 5000, and 
+-- 'Needs Improvement' if it is below 1000. 
+-- Display Order_ID, Customer_Name, Sales, and the sales status."
+select Order_Id,Customer_Name,Sales,
+case
+when Sales>5000 then 'Excellent'
+when Sales between 1000 and 2000 then 'Good'
+else 'needs improvement'
+end as sales_status 
+from storedata;
+
+-- Display 5 orders after skipping the first 10 orders sorted by Order_Date
+select Customer_Name,Order_Date from storedata order by Order_Date asc
+limit 5 offset 10;
+
+
+-- List products that were never sold in 'California'
+select distinct Product_Name from storedata where Product_Name 
+not in(select Product_Name from storedata where State='California') limit 10;
+
+-- List customers who have placed orders in more than one state
+select Customer_Name,count(distinct State) as num_states
+from storedata 
+group by Customer_Name
+having count(distinct State)> 1;
+
+-- calculate overall statistics for sales
+select count(*),count(distinct Customer_Name) as unique_customers,
+sum(Sales) as total_sales,avg(Sales) as avergae_sales,min(Sales) as minimum_sales,max(Sales) as max_sales from storedata;
+
