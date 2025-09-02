@@ -1,1 +1,65 @@
 
+SELECT * FROM ftn.final_hotel;
+-- 1.Write a query to retrieve the names and ratings of all hotels with a rating of 4.0 or higher.
+select Hotel_name,Rating from final_hotel where Rating>=4.0;
+
+-- 2.Find the total number of hotels located in 'Ambaji'.
+select count(*)as total_hotelsin_ambaji from final_hotel where Place='Ambaji';
+
+-- 3.List the names of all hotels that have 'Swimming Pool' as one of their facilities.
+select Hotel_name from final_hotel where Facilities like '%Swimming Pool%';
+
+-- 4.Retrieve the Hotel name and Actual price for the 5 most expensive hotels.
+select Hotel_name,Actual_price from final_hotel 
+order by Actual_price desc
+limit 5; 
+
+-- 5.Select all distinct Destination name values from the table.
+select distinct(Destination_name) as unique_names from final_hotel;
+
+-- 6.Calculate the average Actual price for hotels in each Destination name.
+select Destination_name,avg(Actual_price) from final_hotel
+group by Destination_name;
+
+-- 7.Find the hotel with the highest Discount price and its Destination name.
+select Destination_name,max(Discount_price) as highest_discount_price from final_hotel;
+
+-- 8.Count the number of hotels for each Rating text (e.g., 'Excellent', 'Very Good', 'Good').
+select Rating_text,count(*) as hotel_count from final_hotel where Rating_text in('Excellent','Very Good','Good')
+group by Rating_text;
+
+-- 9.Retrieve all columns for hotels that have an Actual price between 3000 and 5000.
+select * from final_hotel where Actual_price between 3000 and 5000;
+
+-- 10.List the Hotel name, Rating, and Facilities for all hotels where the Hotel name starts with 'Hotel'.
+select Hotel_name,Rating,Facilities from final_hotel where Hotel_name like 'Hotel%';
+
+/*11.Write a query to find the Hotel name and Actual price for all hotels whose Actual price is greater 
+	than the average Actual price of all hotels in the table.*/
+select Hotel_name,Actual_price from final_hotel where Actual_price > (select avg(Actual_price)as average_price from final_hotel)
+order by Actual_price;
+
+-- 12.Determine the Destination name with the largest number of hotels that have a rating of 4.0 or higher.
+select Destination_name,count(*) as larget_hotels from final_hotel where Rating >= 4.0 
+group by Destination_name
+order by larget_hotels;
+
+-- 13.For each Destination name, find the hotel with the lowest Discount price.
+select Destination_name,Hotel_name,min(Discount_price) as lowest_discount from final_hotel 
+group by Destination_name;
+
+/*14.Use a CASE statement to create a new column called Price_Category based on the Actual price: 'Budget' (less than $2000), 
+	'Mid-Range' ($2000 to $5000), and 'Premium' (over $5000). Display the Hotel name, Actual price, and the new Price_Category.*/
+select Hotel_name,Actual_price,
+case
+when Actual_price < 2000 then 'Budget' 
+when Actual_price between 2000 and 5000 then 'Mid-Range'
+when Actual_price < 5000 then 'Premium'
+end as Price_Category
+from final_hotel;
+
+/*15.Calculate the average discount percentage for each Destination name. The discount percentage is calculated as 
+	$((\\text{Actual price} - \\text{Discount price}) / \\text{Actual price}) \* 100$.*/
+select Destination_name, avg((Actual_price-Discount_price)* 100.0/Actual_price) as avg_discounted_price
+from final_hotel
+group by Destination_name;
