@@ -1,6 +1,7 @@
 # ⚡ EV Charging Station Network & Utilization Analytics
 
 An Exploratory Data Analysis (EDA) project on Electric Vehicle (EV) charging infrastructure, power delivery metrics (kWh), station utilization rates, and revenue streams across commercial and residential locations.
+
 ---
 
 ## 📌 Project Overview
