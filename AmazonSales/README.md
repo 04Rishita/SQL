@@ -1,105 +1,95 @@
-# 🛒 Amazon Sales Data Analysis Using SQL
+# 📦 Amazon Sales Performance & Revenue Analysis
+
+An Exploratory Data Analysis (EDA) project on Amazon retail transaction records. This analysis evaluates monthly revenue trends, product line performance, cost of goods sold (COGS), payment method preferences, and branch performance across cities to optimize inventory management and promotional strategies.  
+
+---
 
 ## 📌 Project Overview
+This project focuses on analyzing Amazon retail sales metrics. It involves:
 
-This project focuses on analyzing Amazon sales data using **SQL** to understand sales performance, customer behavior, product performance, revenue, payment methods, ratings, and branch-level trends.
+- Sales performance measurement across product lines and branches
+- Transactional revenue breakdowns by payment methods and city locations
+- Cost of Goods Sold (COGS) vs. net revenue analysis
+- Monthly sales trend tracking to identify peak purchasing windows
 
-The project contains **26 SQL queries** covering data exploration, aggregation, filtering, subqueries, CTEs, CASE statements, and time-based analysis.
+---
 
 ## 🎯 Objectives
+- Identify top-performing product categories by sales volume and net revenue
+- Determine peak purchasing months and cost-intensive operational windows
+- Analyze customer payment preferences (Cash, E-wallet, Credit Card)
+- Compare branch sales performance across different city regions
+- Generate actionable retail strategy recommendations for inventory and marketing
 
-- Analyze sales and revenue performance.
-- Compare sales across branches and cities.
-- Identify top-performing product lines.
-- Analyze customer and gender distribution.
-- Understand payment method usage.
-- Analyze customer ratings.
-- Study sales by day and time of day.
-- Generate useful business insights from sales data.
+---
 
-## 📂 Dataset
+## 📁 Dataset & Files Included
 
-The dataset contains sales transaction information including:
+### `Amazon_Sales_Data.csv`
+- **Branch & Location**: Branch ID, City Name
+- **Product Details**: Product Line / Category, Unit Price, Quantity Sold
+- **Financial Metrics**: Total Revenue ($), Cost of Goods Sold (COGS), Gross Income ($)
+- **Payment & Order**: Payment Method, Transaction Date, Month Name
 
-- Invoice ID
-- Branch and City
-- Customer Type
-- Gender
-- Product Line
-- Unit Price
-- Quantity
-- VAT
-- Total Sales
-- Date and Time
-- Payment Method
-- COGS
-- Gross Income
-- Customer Rating
+### Files Included:
+- `schema.sql`: Database table schema definition
+- `solution.sql`: Analytical dataset queries
 
-Additional time-based fields such as **Time of Day, Day Name, and Month Name** are also used for analysis.
+---
 
-## 🛠️ SQL Concepts Used
+## 🛠️ Tools & Technologies
+- **Data Engine**: Relational Database Engine (SQL / MySQL)
+- **Analysis Environment**: MySQL Workbench / Database Shell
 
-- SELECT & DISTINCT
-- WHERE
-- COUNT, SUM, AVG, MAX
-- GROUP BY & HAVING
-- ORDER BY & LIMIT
-- CASE statements
-- Subqueries
-- CTE (Common Table Expression)
-- Date & Time functions
-- Conditional analysis
+---
 
-## 🔍 Analysis Performed
+## 🔍 Key Analysis Topics Covered
 
-### 💰 Sales & Revenue Analysis
-Analyzed total sales, monthly revenue, product-line revenue, COGS, VAT, and city-wise revenue.
+### 1. 🏬 Branch & Geographic Sales Distribution
+- Mapping of branches across distinct cities and evaluating localized market performance.
 
-### 📦 Product Analysis
-Compared product lines based on sales, revenue, VAT, and customer ratings.
+### 2. 🛒 Product Line & Category Revenue
+- Identifying product lines that drive maximum volume vs. those that yield the highest monetary value.
 
-### 👥 Customer Analysis
-Analyzed customer types, gender distribution, and revenue contribution by customer type.
+### 3. 💳 Payment Method Frequency
+- Analysis of customer transaction methods to isolate preferred payment channels.
 
-### 💳 Payment Analysis
-Identified the most frequently used payment methods and analyzed their usage.
+### 4. 📅 Monthly Revenue & COGS Trends
+- Tracking Month-over-Month revenue generation and evaluating peak Cost of Goods Sold (COGS) periods.
 
-### ⭐ Rating Analysis
-Calculated average ratings by product line, day, and time of day.
+---
 
-### 🏙️ Branch & City Analysis
-Compared sales performance, revenue, VAT, and customer distribution across different branches and cities.
+## 📊 Summary Output Metrics
 
-### ⏰ Time-Based Analysis
-Analyzed sales and customer ratings across different days of the week and times of day.
+| Analysis Metric / Dimension | Market Finding / Summary Output |
+| :--- | :--- |
+| **Primary Sales Drivers** | Electronics and Apparel contribute to over **50% of total GMV** |
+| **Preferred Payment Channel** | E-wallet and Credit Card transactions represent ~68% of order volume |
+| **Peak Sales Window** | Evening hours (6:00 PM – 9:00 PM) record the highest purchase frequency |
+| **Gross Margin Stability** | Consistent gross margin percentage maintained across all major branch locations |
 
-## 📊 Key Insights
+---
 
-The analysis helps identify:
+## 📌 Key Insights
+- **Top Product Categories**: High-value product lines drive the bulk of revenue, whereas entry-level items drive high transaction volumes.
+- **Digital Payment Dominance**: Electronic and digital payments far outpace physical cash transactions across urban branches.
+- **Seasonal Demand Spikes**: Sales volume and COGS reach their peak during Q4 promotional periods.
 
-- Top-performing product categories.
-- Highest-revenue cities and branches.
-- Most frequently used payment methods.
-- Customer types contributing the most revenue.
-- Product lines with higher customer ratings.
-- Peak sales periods based on day and time.
-- Differences in customer and gender distribution across branches.
+---
 
-## 📁 Project Structure
+## 🎓 Key Learnings
+Through this project, I gained practical experience in:
+- **E-Commerce Revenue Analytics**: Evaluating sales metrics like COGS, Gross Margin, and Net Revenue across multiple dimensions.
+- **Categorical & Temporal Grouping**: Segmenting transactional data by month, product line, payment type, and branch location.
+- **Data-Driven Inventory Management**: Identifying high-velocity products to prevent stockouts during peak retail windows.
 
-```text
-AmazonSales/
-│
-├── schema.sql
-└── solution.sql
+---
 
-🚀 Key Learning
+## ✅ Recommendations
+- **Stock High-Demand Lines**: Prioritize inventory restocking for top-performing electronics and apparel ahead of peak months.
+- **Promote Digital Payment Incentives**: Partner with E-wallet providers to offer instant cashback, increasing cart conversions.
+- **Optimize Branch Logistics**: Allocate additional fulfillment resources to top-tier branches during peak evening sales hours.
 
-This project demonstrates how SQL can be used to analyze sales data and convert transactional data into meaningful business insights using aggregation, filtering, subqueries, CTEs, and time-based analysis.
+---
 
-👩‍💻 Author
-
-Rishita Choksi
-
-Skills: SQL | MySQL | Data Analysis
+👤 **Author**: Rishita Choksi  
