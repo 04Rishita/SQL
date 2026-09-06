@@ -102,4 +102,4 @@ This project demonstrates how SQL can be used to analyze sales data and convert 
 
 Rishita Choksi
 
-Skills: SQL | MySQL | Data Analysis | Business Analysis
+Skills: SQL | MySQL | Data Analysis
